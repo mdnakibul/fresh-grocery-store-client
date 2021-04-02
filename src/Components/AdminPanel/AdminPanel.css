@@ -1,0 +1,9 @@
+.admin-left{
+    background-color: blueviolet;
+}
+.admin-link-list li{
+    list-style: none;
+}
+.admin-link-list li a{
+    color: #fff;
+}
