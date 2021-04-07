@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,10 +8,11 @@ import {
 import NotFound from "./Components/NotFound/NotFound";
 import Home from './Components/Home/Home';
 import Navigation from './Components/Navigation/Navigation';
-import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import Checkout from "./Components/Checkout/Checkout";
 import Login from "./Components/Login/Login";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import AddProduct from "./Components/AddProduct/AddProduct";
+import Orders from "./Components/Orders/Orders";
 
 export const UserContext = createContext();
 function App() {
@@ -24,14 +25,17 @@ function App() {
         <Route path="/home">
           <Home></Home>
         </Route>
-        <Route path="/admin">
-          <AdminPanel></AdminPanel>
-        </Route>
         <Route path="/login">
           <Login></Login>
         </Route>
-        <PrivateRoute path="/checkout"> 
+        <PrivateRoute path="/addproduct"> 
+        <AddProduct></AddProduct>
+        </PrivateRoute>
+        <PrivateRoute path="/checkout/:id"> 
         <Checkout></Checkout>
+        </PrivateRoute>
+        <PrivateRoute path="/orders"> 
+        <Orders></Orders>
         </PrivateRoute>
         <Route exact path="/">
           <Home></Home>

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Product from '../Product/Product';
 const Home = () => {
+    const [products,setProducts] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/products')
+        .then(res => res.json())
+        .then(data =>{
+            setProducts(data)
+        })
+        .catch(error => console.log(error))
+    },[])
     return (
         <section>
             <Container className="mt-5">
@@ -16,9 +26,9 @@ const Home = () => {
                     </div>
                 </Row>
                 <Row>
-                    <Product></Product>
-                    <Product></Product>
-                    <Product></Product>
+                    {
+                        products.map(product => <Product product={product} key={product._id}></Product>)
+                    }
                 </Row>
             </Container>
         </section>

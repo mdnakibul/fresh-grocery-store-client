@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { firebaseConfig } from './firebase.config';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from '../../App';
 const Login = () => {
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+     }else {
+        firebase.app(); // if already initialized, use that one
+     }
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
@@ -17,7 +21,12 @@ const Login = () => {
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
-                console.log(result.user);
+                const {displayName,email} = result.user;
+                const signedInUser = {
+                    name : displayName,
+                    email : email,
+                }
+                setLoggedInUser(signedInUser);
                 history.replace(from);
             }).catch((error) => {
                 // Handle Errors here.
