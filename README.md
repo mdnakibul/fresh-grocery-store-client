@@ -8,6 +8,9 @@ orders here.
 
 Remember You Must Have to Log in If You Want to buy a product. 
 You May Have To Wait A Few Second to Load Data.
+## Product Upload
+
+After Selecting the image wait a bit to upload it. If it is uploaded then choosen file will be empty and you are ready to hit the submit button
 
 ## Live Link
 https://fresh-grocery-store.web.app/

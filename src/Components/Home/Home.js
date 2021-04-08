@@ -16,9 +16,9 @@ const Home = () => {
     }, [])
     return (
         <section>
-            <Container className="mt-5">
+            <Container className="mt-3">
                 <Row>
-                    <div className="input-group mb-3">
+                    <div className="input-group mb-4 justify-content-center">
                         <div className="form-outline">
                             <input type="search" id="form1" className="form-control" placeholder="Seach..." />
                         </div>

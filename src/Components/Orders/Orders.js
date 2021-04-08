@@ -8,6 +8,8 @@ const Orders = () => {
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('order-table').style.display = 'table'
             })
     }, [])
 
@@ -20,7 +22,13 @@ const Orders = () => {
     return (
         <div className="container">
             <h2>Your have {orders.length} Orders</h2>
-            <table className="table">
+            <div className="row">
+                <div className="lds-ripple" id='loader'>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <table className="table" style={{ display: 'none' }} id='order-table'>
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -30,7 +38,7 @@ const Orders = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(order => <tr key={order.name}><td>{order.name}</td><td>{order.quantity}</td><td>$ {order.price}</td></tr>)
+                        orders.map(order => <tr key={order._id}><td>{order.name}</td><td>{order.quantity}</td><td>$ {order.price}</td></tr>)
                     }
                     <tr>
                         <td colSpan='2'>Total</td>

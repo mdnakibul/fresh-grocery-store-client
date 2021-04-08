@@ -4,6 +4,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from '../../App';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 const Login = () => {
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
@@ -33,11 +35,12 @@ const Login = () => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode , errorMessage);
+                alert(errorMessage)
             });
     }
     return (
         <div className="container">
-            <button className="btn btn-primary" onClick={handleSignIn}> Log in</button>
+            <button className="btn btn-primary d-block m-auto" onClick={handleSignIn}> <FontAwesomeIcon icon={faGoogle}/> Login With Google</button>
         </div>
     );
 };

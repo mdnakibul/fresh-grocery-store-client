@@ -13,25 +13,27 @@ const ManageProduct = () => {
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
+                document.getElementById('loader').style.display = 'none'
+                document.getElementById('product-table').style.display = 'table'
             })
             .catch(error => console.log(error))
     }, [])
-    const deleteProduct = (event,id)=>{
-        console.log('Deleting Product',id);
-       fetch('https://safe-tundra-00266.herokuapp.com/delete/'+id,{
-           method : 'DELETE'
-       })
-       .then(res => res.json())
-       .then(data => {
-           if(data){
-               alert('Delete Successul')
-               history.push('/manage')
-           }
-       })
-       console.log(event.target.parentNode.parentNode.parentNode)
-       event.target.parentNode.parentNode.parentNode.style.display = 'none';
+    const deleteProduct = (event, id) => {
+        console.log('Deleting Product', id);
+        fetch('https://safe-tundra-00266.herokuapp.com/delete/' + id, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    alert('Delete Successul')
+                    history.push('/manage')
+                }
+            })
+        console.log(event.target.parentNode.parentNode.parentNode)
+        event.target.parentNode.parentNode.parentNode.style.display = 'none';
     }
-    const findNode = (event) =>{
+    const findNode = (event) => {
         console.log(event.target.parentNode.parentNode);
     }
     return (
@@ -48,7 +50,11 @@ const ManageProduct = () => {
                     </div>
                     <div className="col-md-10">
                         <h1>Manage your product here</h1>
-                        <table className="table">
+                        <div className="lds-ripple" id='loader'>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <table className="table" id='product-table' style={{display : 'none'}}>
                             <thead>
                                 <tr>
                                     <th scope="col">Product Name</th>
@@ -59,7 +65,7 @@ const ManageProduct = () => {
                             </thead>
                             <tbody>
                                 {
-                                    products.map(product => <tr key={product._id}><td>{product.name}</td><td>{product.weight}</td><td>{product.price}</td><td><FontAwesomeIcon icon={faEdit} color="green" onClick={(event)=>findNode(event)}/><FontAwesomeIcon icon={faTrashAlt} className="ml-3" color="red" onClick={(event)=>deleteProduct(event , product._id)} /></td></tr>)
+                                    products.map(product => <tr key={product._id}><td>{product.name}</td><td>{product.weight}</td><td>{product.price}</td><td><FontAwesomeIcon icon={faEdit} color="green" onClick={(event) => findNode(event)} /><FontAwesomeIcon icon={faTrashAlt} className="ml-3" color="red" onClick={(event) => deleteProduct(event, product._id)} /></td></tr>)
                                 }
 
                             </tbody>
