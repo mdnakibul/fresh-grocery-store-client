@@ -7,6 +7,7 @@ You can also buy a product. Just click buy now and in the checkout page click ch
 orders here. 
 
 Remember You Must Have to Log in If You Want to buy a product. 
+You May Have To Wait A Few Second to Load Data.
 
 ## Live Link
 https://fresh-grocery-store.web.app/

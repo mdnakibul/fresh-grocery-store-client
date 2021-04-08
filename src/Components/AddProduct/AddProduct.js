@@ -60,7 +60,7 @@ const AddProduct = () => {
                         <img src={logo} alt="Logo" className="img-fluid mb-3" />
                         <ul className="admin-link-list">
                             <li><FontAwesomeIcon icon={faBorderAll} /> <Link to="/manage">Manage Product</Link>  </li>
-                            <li><FontAwesomeIcon icon={faPlus} /> <Link to="/add"> Add Product</Link> </li>
+                            <li><FontAwesomeIcon icon={faPlus} /> <Link to="/addproduct"> Add Product</Link> </li>
                             <li><FontAwesomeIcon icon={faPencilAlt} /> <Link to="/edit">Edit Product</Link> </li>
                         </ul>
                     </div>
