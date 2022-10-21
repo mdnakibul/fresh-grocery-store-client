@@ -9,7 +9,7 @@ const ManageProduct = () => {
     const [products, setProducts] = useState([]);
     const history = useHistory()
     useEffect(() => {
-        fetch('https://safe-tundra-00266.herokuapp.com/products')
+        fetch('https://fresh-grocerry-store-server.vercel.app/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
@@ -20,7 +20,7 @@ const ManageProduct = () => {
     }, [])
     const deleteProduct = (event, id) => {
         console.log('Deleting Product', id);
-        fetch('https://safe-tundra-00266.herokuapp.com/delete/' + id, {
+        fetch('https://fresh-grocerry-store-server.vercel.app/delete/' + id, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -54,7 +54,7 @@ const ManageProduct = () => {
                             <div></div>
                             <div></div>
                         </div>
-                        <table className="table" id='product-table' style={{display : 'none'}}>
+                        <table className="table" id='product-table' style={{ display: 'none' }}>
                             <thead>
                                 <tr>
                                     <th scope="col">Product Name</th>

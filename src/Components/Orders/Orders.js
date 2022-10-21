@@ -4,7 +4,7 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [loggedInUser] = useContext(UserContext);
     useEffect(() => {
-        fetch('https://safe-tundra-00266.herokuapp.com/orders?email=' + loggedInUser.email)
+        fetch('https://fresh-grocerry-store-server.vercel.app/orders?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);

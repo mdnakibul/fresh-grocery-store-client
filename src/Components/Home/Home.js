@@ -6,7 +6,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://safe-tundra-00266.herokuapp.com/products')
+        fetch('https://fresh-grocerry-store-server.vercel.app/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);

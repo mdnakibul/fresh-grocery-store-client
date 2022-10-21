@@ -5,32 +5,32 @@ import './Checkout.css'
 
 const Checkout = () => {
     const { id } = useParams();
-    const [product,setProduct] = useState({})
+    const [product, setProduct] = useState({})
     const [loggedInUser] = useContext(UserContext);
     const history = useHistory();
-    useEffect(()=>{
-        fetch('https://safe-tundra-00266.herokuapp.com/product/' + id)
-        .then(res => res.json())
-        .then(data => {
-            setProduct(data[0])
-        })
-    },[id]);
-    const handleCheckout = ()=>{
+    useEffect(() => {
+        fetch('https://fresh-grocerry-store-server.vercel.app/product/' + id)
+            .then(res => res.json())
+            .then(data => {
+                setProduct(data[0])
+            })
+    }, [id]);
+    const handleCheckout = () => {
         const order = {
-            name : product.name,
-            price : product.price,
-            quantity : 1,
-            date : new Date(),
-            email : loggedInUser.email
+            name: product.name,
+            price: product.price,
+            quantity: 1,
+            date: new Date(),
+            email: loggedInUser.email
         }
-        fetch('https://safe-tundra-00266.herokuapp.com/addOrder',{
-            method : 'POST',
-            headers : {
-                'Content-Type' : 'application/json'
+        fetch('https://fresh-grocerry-store-server.vercel.app/addOrder', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body : JSON.stringify(order)
-        }).then(res =>{
-            if(res){
+            body: JSON.stringify(order)
+        }).then(res => {
+            if (res) {
                 history.push('/orders')
             }
         })

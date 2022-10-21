@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import './AdminPanel.css';
 const AddProduct = () => {
 
-    const { register,reset, handleSubmit, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const [imageURL, setIMageURL] = useState(null);
 
 
@@ -21,7 +21,7 @@ const AddProduct = () => {
             weight: data.weight,
             imageURL: imageURL
         };
-        const url = `https://safe-tundra-00266.herokuapp.com/addProduct`;
+        const url = `https://fresh-grocerry-store-server.vercel.app/addProduct`;
 
         fetch(url, {
             method: 'POST',
@@ -67,15 +67,15 @@ const AddProduct = () => {
                     <div className="col-md-10">
                         <h1>Add your product here</h1>
                         <form onSubmit={handleSubmit(onSubmit)} id="upload-form">
-                            <input {...register("name",{ required: true })} className="m-2" placeholder="Product Name"/>
+                            <input {...register("name", { required: true })} className="m-2" placeholder="Product Name" />
                             {errors.name && <span>This field is required</span>}
-                            <input {...register("weight", { required: true })} className="m-2" placeholder="Product weight"/>
+                            <input {...register("weight", { required: true })} className="m-2" placeholder="Product weight" />
                             {errors.weight && <span>This field is required</span>}
-                            <br/>
-                            <input {...register("price", { required: true })} className="m-2" placeholder="Product price"/>
+                            <br />
+                            <input {...register("price", { required: true })} className="m-2" placeholder="Product price" />
                             {errors.price && <span>This field is required</span>}
-                            <input type="file" {...register("image")} onChange={handleImageUpload} className="m-2"/>
-                            <br/>
+                            <input type="file" {...register("image")} onChange={handleImageUpload} className="m-2" />
+                            <br />
                             <input type="submit" />
                         </form>
                     </div>
